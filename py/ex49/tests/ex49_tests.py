@@ -1,5 +1,6 @@
 from nose.tools import *
-from ex49_main import lexicon
+from ex49 import lexicon
+from ex49 import parser_clone
 
 def test_direction():
 	assert_equal(lexicon.scan("north"), [('direction', 'north')])
@@ -42,6 +43,9 @@ def test_errors():
 		 	      ('error', 'IAS'),
 			      ('noun', 'princess')])
 
-
+def test_parse_subject():
+	word_list = [('verb','run'),('direction', 'north')]
+	assert_equal(parser_clone.parse_sentence(
+		word_list),parser_clone.Sentence('player', 'run', 'north'))
 
 
